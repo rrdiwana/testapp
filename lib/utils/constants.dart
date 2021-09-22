@@ -15,6 +15,13 @@ final List<Widget> tabs = <Widget>[
   Tab(icon: basketballTabIcon),
 ];
 
+final Map<int, String> tabNames = {
+  0: cricketTabName,
+  1: footballTabName,
+  2: hockeyTabName,
+  3: basketBallTabName,
+};
+
 /// Different immutable icons/images feilds to be defined here
 final Icon cricketTabIcon = Icon(Icons.sports_cricket_rounded);
 final Icon footballTabIcon = Icon(Icons.sports_soccer_rounded);

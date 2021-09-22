@@ -6,34 +6,31 @@ class ScoreMan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const ScoreManHomePage(
-        title: 'SCOREMAN',
+      home: ScoreManHomePage(
+        title: 'CRICKET',
       ),
     );
   }
 }
 
 class ScoreManHomePage extends StatefulWidget {
-  const ScoreManHomePage({required this.title});
-  final String title;
+  ScoreManHomePage({required this.title});
+  String title;
 
   @override
   State<ScoreManHomePage> createState() => _ScoreManHomePageSate();
 }
 
 class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
   late TabController _tabController;
-
   @override
   void initState() {
+    _tabController = TabController(length: tabs.length, vsync: this);
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(() {
       setState(() {
-        _selectedIndex = _tabController.index;
+        widget.title = tabNames[_tabController.index].toString();
       });
-      print("Selected Index: " + _tabController.index.toString());
     });
   }
 
@@ -108,22 +105,22 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerPro
                 children: <Widget>[
                   Icon(
                     Icons.sports_cricket_rounded,
-                    size: 350,
+                    size: 150,
                     color: Colors.white,
                   ),
                   Icon(
                     Icons.sports_soccer_rounded,
-                    size: 350,
+                    size: 150,
                     color: Colors.white,
                   ),
                   Icon(
                     Icons.sports_hockey_rounded,
-                    size: 350,
+                    size: 150,
                     color: Colors.white,
                   ),
                   Icon(
                     Icons.sports_basketball_rounded,
-                    size: 350,
+                    size: 150,
                     color: Colors.white,
                   ),
                 ],
