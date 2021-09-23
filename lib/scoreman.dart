@@ -6,30 +6,27 @@ class ScoreMan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ScoreManHomePage(
-        title: 'CRICKET',
-      ),
+      home: ScoreManHomePage(),
     );
   }
 }
 
 class ScoreManHomePage extends StatefulWidget {
-  ScoreManHomePage({required this.title});
-  String title;
-
   @override
   State<ScoreManHomePage> createState() => _ScoreManHomePageSate();
 }
 
 class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  String title = cricketTabName;
+
   @override
   void initState() {
     _tabController = TabController(length: tabs.length, vsync: this);
     super.initState();
     _tabController.addListener(() {
       setState(() {
-        widget.title = tabNames[_tabController.index].toString();
+        title = tabNames[_tabController.index].toString();
       });
     });
   }
@@ -45,16 +42,16 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerPro
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black,
         body: CustomScrollView(
           primary: true,
           slivers: <Widget>[
             SliverAppBar(
               // backgroundColor: Color(0xff00363a),
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.black,
               centerTitle: true,
               title: Text(
-                widget.title,
+                title,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               leading: IconButton(
@@ -125,7 +122,7 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerPro
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
