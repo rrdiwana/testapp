@@ -15,5 +15,3 @@ class _HockeyTabViewState extends State<HockeyTabView> {
     );
   }
 }
-
-class CricketHomePage {}
