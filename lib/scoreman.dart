@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/components/basketball_tab_view.dart';
+import 'package:testapp/components/cricket_tab_view.dart';
+import 'package:testapp/components/football_tab_view.dart';
+import 'package:testapp/components/hockey_tab_view.dart';
 import 'package:testapp/utils/common_utility.dart';
 import 'package:testapp/utils/constants.dart';
 
@@ -11,12 +15,14 @@ class ScoreMan extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ScoreManHomePage extends StatefulWidget {
   @override
   State<ScoreManHomePage> createState() => _ScoreManHomePageSate();
 }
 
-class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerProviderStateMixin {
+class _ScoreManHomePageSate extends State<ScoreManHomePage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   String title = cricketTabName;
 
@@ -100,26 +106,10 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerPro
               child: TabBarView(
                 controller: _tabController,
                 children: <Widget>[
-                  Icon(
-                    Icons.sports_cricket_rounded,
-                    size: 150,
-                    color: Colors.white,
-                  ),
-                  Icon(
-                    Icons.sports_soccer_rounded,
-                    size: 150,
-                    color: Colors.white,
-                  ),
-                  Icon(
-                    Icons.sports_hockey_rounded,
-                    size: 150,
-                    color: Colors.white,
-                  ),
-                  Icon(
-                    Icons.sports_basketball_rounded,
-                    size: 150,
-                    color: Colors.white,
-                  ),
+                  CricketTabView(),
+                  FootballTabView(),
+                  HockeyTabView(),
+                  BasketballTabView()
                 ],
               ),
             ),
