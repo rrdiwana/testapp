@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/components/basketball_tab_view.dart';
-import 'package:testapp/components/cricket_tab_view.dart';
-import 'package:testapp/components/football_tab_view.dart';
-import 'package:testapp/components/hockey_tab_view.dart';
+import 'package:testapp/components/tab_views/basketball_tab_view.dart';
+import 'package:testapp/components/tab_views/football_tab_view.dart';
+import 'package:testapp/components/tab_views/hockey_tab_view.dart';
 import 'package:testapp/utils/common_utility.dart';
 import 'package:testapp/utils/constants.dart';
+import 'package:testapp/components/tab_views/cricket_tab_view.dart';
 
 class ScoreMan extends StatelessWidget {
   @override
@@ -21,8 +21,7 @@ class ScoreManHomePage extends StatefulWidget {
   State<ScoreManHomePage> createState() => _ScoreManHomePageSate();
 }
 
-class _ScoreManHomePageSate extends State<ScoreManHomePage>
-    with SingleTickerProviderStateMixin {
+class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   String title = cricketTabName;
 
@@ -48,7 +47,7 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage>
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.white,
         body: CustomScrollView(
           primary: true,
           slivers: <Widget>[
@@ -109,7 +108,7 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage>
                   CricketTabView(),
                   FootballTabView(),
                   HockeyTabView(),
-                  BasketballTabView()
+                  BasketballTabView(),
                 ],
               ),
             ),
