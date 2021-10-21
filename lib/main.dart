@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testapp/widgets/theme.dart';
 import 'scoreman.dart';
 
 void main() {
@@ -9,30 +10,19 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ThemeChange>(
-      create: (context) => ThemeChange(),
-      child: Consumer<ThemeChange>(
-        builder: (context, themeMode, __) {
+    return ChangeNotifierProvider<MyTheme>(
+      create: (context) => MyTheme(),
+      child: Consumer<MyTheme>(
+        builder: (context, theme, __) {
           return MaterialApp(
-            themeMode: themeMode.getMode(),
-            theme: ThemeData(
-                primarySwatch: Colors.blue, brightness: Brightness.light),
-            darkTheme: ThemeData(brightness: Brightness.dark),
+            themeMode: theme.getThemeMode(),
+            theme: theme.getlightTheme(),
+            darkTheme: theme.getDarkTheme(),
             home: ScoreMan(),
             debugShowCheckedModeBanner: false,
           );
         },
       ),
     );
-  }
-}
-
-class ThemeChange extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.light;
-  ThemeMode getMode() => _themeMode;
-  void clickEvent(dark) {
-    _themeMode = dark ? ThemeMode.dark : ThemeMode.light;
-    print(dark);
-    notifyListeners();
   }
 }

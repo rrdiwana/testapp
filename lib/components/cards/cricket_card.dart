@@ -8,7 +8,7 @@ class CricketCard extends StatefulWidget {
 
 class _CricketCardState extends State<CricketCard> {
   /// total number of pages/cards
-  int _totalNumberOfMatches = 4;
+  final int _totalNumberOfMatches = 4;
 
   /// selected page
   late ValueNotifier<int> _counter;
@@ -52,14 +52,16 @@ class _CricketCardState extends State<CricketCard> {
   }
 
   Widget buildPageViewForNormalCards() {
-    List<Widget> currentMatchesList = List<Widget>.filled(_totalNumberOfMatches, buildNormalCard());
+    List<Widget> currentMatchesList =
+        List<Widget>.filled(_totalNumberOfMatches, buildNormalCard());
 
     return PageView.builder(
       scrollDirection: Axis.horizontal,
       controller: _pageController,
       itemCount: _totalNumberOfMatches,
       onPageChanged: (int pageNumber) {
-        _counter.value = pageNumber; // increasing the value of counter to notify the pageindicator
+        _counter.value =
+            pageNumber; // increasing the value of counter to notify the pageindicator
       },
       itemBuilder: (context, index) {
         return currentMatchesList[index];

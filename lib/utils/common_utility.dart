@@ -9,13 +9,17 @@ void showSnackbar(context, [String message = 'To be configured']) {
   ));
 }
 
-// Delete this after implementing the menu button funcitonality
-void select(value) {
-  switch (value) {
-    case 'Home':
-      break;
-    case 'Order':
-      break;
-  }
-  print(value);
+//use this function to change header colors for Dark and Normal Mode.
+Color headerColor(context) {
+  final ThemeData theme = Theme.of(context);
+  return theme.brightness == Brightness.dark ? Colors.black : Colors.blue;
+}
+
+//change icon and icon color based to themeMode
+Icon iconColorChange(
+    context, IconData icon1, Color color1, IconData icon2, Color color2) {
+  final ThemeData theme = Theme.of(context);
+  return theme.brightness == Brightness.dark
+      ? Icon(icon1, color: color1)
+      : Icon(icon2, color: color2);
 }

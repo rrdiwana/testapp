@@ -7,17 +7,12 @@ import 'package:testapp/utils/common_utility.dart';
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-              decoration: BoxDecoration(
-                color: (theme.brightness == Brightness.dark)
-                    ? Colors.black
-                    : Colors.blue,
-              ),
+              decoration: BoxDecoration(color: headerColor(context)),
               child: Column(
                 children: <Widget>[
                   Icon(

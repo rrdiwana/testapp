@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:testapp/components/tab_views/basketball_tab_view.dart';
 import 'package:testapp/components/tab_views/football_tab_view.dart';
 import 'package:testapp/components/tab_views/hockey_tab_view.dart';
-import 'package:testapp/main.dart';
 import 'package:testapp/utils/common_utility.dart';
 import 'package:testapp/utils/constants.dart';
 import 'package:testapp/components/tab_views/cricket_tab_view.dart';
 import 'package:testapp/widgets/drawer.dart';
+import 'package:testapp/widgets/theme.dart';
 
 // ignore: must_be_immutable
 class ScoreMan extends StatefulWidget {
@@ -16,7 +16,7 @@ class ScoreMan extends StatefulWidget {
 }
 
 class _ScoreManHomePage extends State<ScoreMan>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   String title = cricketTabName;
   static bool dark = false;
@@ -40,7 +40,7 @@ class _ScoreManHomePage extends State<ScoreMan>
 
   @override
   Widget build(BuildContext context) {
-    final object = Provider.of<ThemeChange>(context);
+    final theme = Provider.of<MyTheme>(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -49,6 +49,7 @@ class _ScoreManHomePage extends State<ScoreMan>
           primary: true,
           slivers: <Widget>[
             SliverAppBar(
+              backgroundColor: headerColor(context),
               centerTitle: true,
               title: Text(
                 title,
@@ -58,10 +59,11 @@ class _ScoreManHomePage extends State<ScoreMan>
                 IconButton(
                     onPressed: () {
                       setState(() => dark = !dark);
-                      object.clickEvent(dark);
+                      theme.changeTheme(dark);
                       showSnackbar(context, dark ? "Dark Mode" : "Light Mode");
                     },
-                    icon: Icon(dark ? lightBulb : darkBulb))
+                    icon: iconColorChange(context, darkBulb, Colors.white,
+                        lightBulb, Colors.black))
               ],
               floating: true,
               pinned: true,

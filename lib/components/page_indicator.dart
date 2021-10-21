@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class PageIndiciator extends StatefulWidget {
   int totalNumberOfPages = 0;
   ValueNotifier<int> counter;
@@ -13,11 +14,13 @@ class PageIndiciator extends StatefulWidget {
   State<PageIndiciator> createState() => PageIndicatorState(counter: counter);
 }
 
-class PageIndicatorState extends State<PageIndiciator> with AutomaticKeepAliveClientMixin {
+class PageIndicatorState extends State<PageIndiciator>
+    with AutomaticKeepAliveClientMixin {
   ValueNotifier<int> counter;
   PageIndicatorState({required this.counter});
 
   @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: counter,
@@ -50,8 +53,11 @@ class PageIndicatorState extends State<PageIndiciator> with AutomaticKeepAliveCl
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
           image: isActive
-              ? DecorationImage(image: AssetImage('assets/graphics/cricket.png'))
-              : DecorationImage(image: AssetImage('assets/graphics/cricket-grey-outlined.png')),
+              ? DecorationImage(
+                  image: AssetImage('assets/graphics/cricket.png'))
+              : DecorationImage(
+                  image:
+                      AssetImage('assets/graphics/cricket-grey-outlined.png')),
           // color: isActive ? Colors.red : Colors.grey,
           borderRadius: BorderRadius.all(Radius.circular(22))),
     );
