@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:testapp/components/tab_views/basketball_tab_view.dart';
 import 'package:testapp/components/tab_views/football_tab_view.dart';
 import 'package:testapp/components/tab_views/hockey_tab_view.dart';
 import 'package:testapp/utils/common_utility.dart';
 import 'package:testapp/utils/constants.dart';
 import 'package:testapp/components/tab_views/cricket_tab_view.dart';
-
-class ScoreMan extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ScoreManHomePage(),
-    );
-  }
-}
+import 'package:testapp/widgets/drawer.dart';
+import 'package:testapp/widgets/theme.dart';
 
 // ignore: must_be_immutable
-class ScoreManHomePage extends StatefulWidget {
+class ScoreMan extends StatefulWidget {
   @override
-  State<ScoreManHomePage> createState() => _ScoreManHomePageSate();
+  State<ScoreMan> createState() => _ScoreManHomePage();
 }
 
-class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerProviderStateMixin {
+class _ScoreManHomePage extends State<ScoreMan>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   String title = cricketTabName;
+  static bool dark = false;
 
   @override
   void initState() {
@@ -44,56 +40,36 @@ class _ScoreManHomePageSate extends State<ScoreManHomePage> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<MyTheme>(context);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        // backgroundColor: Colors.white,
+        drawer: MyDrawer(),
         body: CustomScrollView(
           primary: true,
           slivers: <Widget>[
             SliverAppBar(
-              // backgroundColor: Color(0xff00363a),
-              backgroundColor: Colors.black,
+              backgroundColor: headerColor(context),
               centerTitle: true,
               title: Text(
                 title,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              leading: IconButton(
-                  onPressed: () {
-                    showSnackbar(context);
-                  },
-                  icon: Icon(Icons.menu_rounded)),
-              actions: <Widget>[
+              actions: [
                 IconButton(
-                  onPressed: () {
-                    showSnackbar(context, 'Profile, to be configured');
-                  },
-                  icon: Icon(Icons.account_circle_rounded),
-                ),
-                PopupMenuButton(
-                  onSelected: select,
-                  itemBuilder: (BuildContext context) {
-                    return {
-                      'Settings',
-                      'Info',
-                    }.map((String choice) {
-                      return PopupMenuItem(
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                ),
+                    onPressed: () {
+                      setState(() => dark = !dark);
+                      theme.changeTheme(dark);
+                      showSnackbar(context, dark ? "Dark Mode" : "Light Mode");
+                    },
+                    icon: iconColorChange(context, darkBulb, Colors.white,
+                        lightBulb, Colors.black))
               ],
               floating: true,
               pinned: true,
-              // snap: true,
               bottom: TabBar(
                 controller: _tabController,
-                // isScrollable: false,
                 indicator: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(10),
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),

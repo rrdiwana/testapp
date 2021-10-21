@@ -6,8 +6,10 @@ class CricketTabView extends StatefulWidget {
   State<CricketTabView> createState() => _CricketTabViewState();
 }
 
-class _CricketTabViewState extends State<CricketTabView> with AutomaticKeepAliveClientMixin {
+class _CricketTabViewState extends State<CricketTabView>
+    with AutomaticKeepAliveClientMixin {
   @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     return CricketCard();
   }

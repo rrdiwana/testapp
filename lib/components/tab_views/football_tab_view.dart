@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/components/cards/football_card.dart';
 
 class FootballTabView extends StatefulWidget {
   @override
@@ -8,10 +9,6 @@ class FootballTabView extends StatefulWidget {
 class _FootballTabViewState extends State<FootballTabView> {
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      Icons.sports_soccer_rounded,
-      size: 150,
-      color: Colors.black,
-    );
+    return FootballCard();
   }
 }

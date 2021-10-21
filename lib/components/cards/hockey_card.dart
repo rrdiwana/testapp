@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/components/page_indicator.dart';
 
-class CricketCard extends StatefulWidget {
+class HockeyCard extends StatefulWidget {
   @override
-  State<CricketCard> createState() => _CricketCardState();
+  State<HockeyCard> createState() => _HockeyCardState();
 }
 
-class _CricketCardState extends State<CricketCard> {
+class _HockeyCardState extends State<HockeyCard> {
   /// total number of pages/cards
   final int _totalNumberOfMatches = 4;
 
