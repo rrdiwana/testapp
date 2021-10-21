@@ -27,3 +27,6 @@ final Icon cricketTabIcon = Icon(Icons.sports_cricket_rounded);
 final Icon footballTabIcon = Icon(Icons.sports_soccer_rounded);
 final Icon hockeyTabIcon = Icon(Icons.sports_hockey_rounded);
 final Icon basketballTabIcon = Icon(Icons.sports_basketball_rounded);
+
+final IconData lightBulb = IconData(0xf01e, fontFamily: 'MaterialIcons');
+final IconData darkBulb = IconData(0xf70b, fontFamily: 'MaterialIcons');
