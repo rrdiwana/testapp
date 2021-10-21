@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/components/cards/hockey_card.dart';
 
 class HockeyTabView extends StatefulWidget {
   @override
@@ -8,10 +9,6 @@ class HockeyTabView extends StatefulWidget {
 class _HockeyTabViewState extends State<HockeyTabView> {
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      Icons.sports_hockey_rounded,
-      size: 150,
-      color: Colors.black,
-    );
+    return HockeyCard();
   }
 }
